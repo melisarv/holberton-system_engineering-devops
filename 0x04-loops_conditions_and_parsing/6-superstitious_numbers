@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# displays the numbers 1 to 20 and displays
+
+COUNTR=1
+while [ "$COUNTR" -le 20 ]; do
+    echo "$COUNTR"
+    case "$COUNTR" in
+	4)
+	    echo "bad luck from China"
+	    ;;
+	9)
+	    echo "bad luck from Japan"
+	    ;;
+	17)
+	    echo "bad luck from Italy"
+	    ;;
+    esac
+    let COUNTR=COUNTR+1
+done

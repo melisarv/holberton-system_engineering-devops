@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# displays Holberton School 10 times.
+
+CONTR=0
+while [ $CONTR -lt 10 ]; do
+    echo "Holberton School"
+    let CONTR=CONTR+1
+done
