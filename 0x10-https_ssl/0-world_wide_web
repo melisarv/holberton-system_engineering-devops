@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# displays information about subdomains
+array=( "$@" )
+if [ "$#" -eq 1 ]; then
+	array+=("www" "lb-01" "web-01" "web-02")
+fi
+for subdomain in "${array[@]:1}"; do
+	dig +noall +answer "$subdomain.${array[0]}" | \
+		awk -v sd="$subdomain" '{print "The subdomain "sd" is a "$4" record and points to "$5}'
+done
