@@ -1,11 +1,10 @@
 # set up ssh config file for connect to a server without typing a password
-exec { 'identity':
-  command  => 'echo IdentityFile ~/.ssh/holberton >> /etc/ssh/ssh_config',
-  provider => 'shell',
-  path     => '/usr/bin/',
+file_line { 'id file stuff':
+  path => '/etc/ssh/ssh_config',
+  line => 'IdentityFile ~/.ssh/holberton',
 }
-exec { 'no_password':
-  command  => 'echo PasswordAuthentication no >> /etc/ssh/ssh_config',
-  provider => 'shell',
-  path     => '/usr/bin/',
+
+file_line { 'psw no':
+  path => '/etc/ssh/ssh_config',
+  line => 'PasswordAuthentication no',
 }
