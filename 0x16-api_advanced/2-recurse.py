@@ -13,12 +13,12 @@ def recurse(subreddit, hot_list=[], after=None, count=0):
     if res.status_code != 200:
         return None
 
+    result = res.json()
     h_list = hot_list + [i.get("data").get("title")
-                         for i in res.json()
+                         for i in result
                          .get("data")
                          .get("children")]
 
-    result = res.json()
     if not result.get("data").get("after"):
         return h_list
 
