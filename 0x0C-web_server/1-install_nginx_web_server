@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# install nginx on web server and create html pages
+
+apt-get update
+apt-get install -y nginx
+
+echo "Holberton School" | sudo tee /var/www/html/index.html
+
+service nginx restart
