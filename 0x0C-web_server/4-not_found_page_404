@@ -1,13 +1,12 @@
 #!/usr/bin/env bash
 # cofigure nginx server to have a custom 404 page
-
+REDIRECT="location /redirect_me {\n return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n}\n"
 apt-get update
 apt-get install -y nginx
-ERROR="404.html"
-service nginx start
-echo "Ceci n'est pas une page" > $ERROR
-mv $ERROR /var/www/html/
+echo "Holberton School" > /var/www/html/index.html
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+sudo sed -i "30i $REDIRECT" /etc/nginx/sites-enabled/default
 error_pag="\\\terror_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}"
-sed -i "27i $error_pag" /etc/nginx/sites-available/default
+sed -i "27i $error_pag" /etc/nginx/sites-enabled/default
 service nginx restart
 service nginx reload
