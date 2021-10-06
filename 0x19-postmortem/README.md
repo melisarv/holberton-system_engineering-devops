@@ -1,6 +1,10 @@
 # 0x19-postmortem: Logic API Infrastructure Outage Incident Report
 Friday, Octuber 1, 2021
 
+<p align="center">
+  <img src="meme_keepcalm.png" />
+</p>
+
 ## ISSUE SUMMARY
 
 From 8:15 UTC to 09:50 UTC, requests to most of the Logic APIs resulted in 500 error response messages. Logic applications that rely on these APIs also returned errors or had reduced functionality. At its peak, the issue affected 100% of the traffic to this API infrastructure. The main cause of this outage was an invalid configuration change that exposed a bug in a widely used internal library.
