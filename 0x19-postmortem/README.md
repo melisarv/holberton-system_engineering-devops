@@ -2,21 +2,26 @@
 Friday, Octuber 1, 2021
 
 <p align="center">
-  <img src="meme_keepcalm.png" />
+  <img src="meme-brace-yourselves.jpg" width="50" height="50"/>
 </p>
 
 ## ISSUE SUMMARY
 
-From 8:15 UTC to 09:50 UTC, requests to most of the Logic APIs resulted in 500 error response messages. Logic applications that rely on these APIs also returned errors or had reduced functionality. At its peak, the issue affected 100% of the traffic to this API infrastructure. The main cause of this outage was an invalid configuration change that exposed a bug in a widely used internal library.
+On October 1, a service interruption was generated for 1 hour and 35 minutes, restoring service at 09:50 UTC. From 8:15 UTC to 09:50 UTC, Logic API requests resulted in 500 error response messages. Logic apps that rely on these APIs also threw errors or had reduced functionality. Affecting users who connected in that time interval, impacting 30% of users. The main cause of this outage was an invalid configuration change that exposed a bug in a widely used internal library.
 
 ## TIMELINE
-- 8:05 UTC: Configuration push begins
-- 8:15 UTC: Outage begins
+
+- 8:05 UTC: Inadvertent configuration push to production environment begins without first being released to test environment.
+- 8:10 UTC: Servers were repeatedly rebooting while trying to recover.
+- 8:15 UTC: Service outage begins.
 - 8:15 UTC: Pagers alerted teams
-- 8:48 UTC: Failed configuration change rollback
-- 9:05 UTC: Successful configuration rollback
-- 9:12 UTC: Server restarts begin
-- 9:50 UTC: 100% of traffic back online
+- 8:17 UTC: Engineers checked the logs and the status of the services, quickly escalated the problem.
+- 8:19 UTC: The incident response team identified that the monitoring system was compounding the problem caused by this error.
+- 8:48 UTC: The attempt to roll back the configuration change failed.
+- 9:05 UTC: The error has been solved and the correct configuration rollback proceeds.
+- 9:12 UTC: Server restarts begin, gradually.
+- 9:39 UTC: 25% of the traffic was restored.
+- 9:50 UTC: 100% of traffic routed to API infrastructure, service is back online.
 
 ## ROOT CAUSE
 
@@ -24,7 +29,7 @@ At 8:05 UTC, a configuration change was inadvertently released to our production
 
 ## RESOLUTION AND RECOVERY
 
-At 8:15 UTC, the monitoring systems alerted our engineers who investigated and quickly escalated the issue. By 8:15 UTC, the incident response team identified that the monitoring system was exacerbating the problem caused by this bug.
+At 8:15 UTC, the monitoring systems alerted our engineers who investigated and quickly escalated the issue. By 8:19 UTC, the incident response team identified that the monitoring system was exacerbating the problem caused by this bug.
 
 At 8:48 UTC, we attempted to rollback the problematic configuration change. This rollback failed due to complexity in the configuration system which caused our security checks to reject the rollback. These problems were addressed and we successfully rolled back at 9:05 UTC.
 
