@@ -2,7 +2,7 @@
 Friday, Octuber 1, 2021
 
 <p align="center">
-  <img src="meme-brace-yourselves.jpg" width="50" height="50"/>
+  <img src="meme-brace-yourselves.jpg" width="300" height="275"/>
 </p>
 
 ## ISSUE SUMMARY
